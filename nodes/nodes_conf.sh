@@ -117,9 +117,8 @@ systemctl restart containerd
 
 # add node tu cluster using kubeadmin join command:
 
-sudo kubeadm join 10.129.0.2:6443 --token jzzpr0.7gyd80qyea4128g2 --discovery-token-ca-cert-hash sha256:4b2e7feb8911fb0aa8a8ca1046c4c5157843ca7659a3f10f8c3048836c5d876e
-
-
+# execute in master 
+# kubeadm token create --print-join-command
 
 
 # posible errpr when usinf kubeadm join: 
