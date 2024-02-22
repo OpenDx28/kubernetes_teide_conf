@@ -1,0 +1,42 @@
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"v1","kind":"Service","metadata":{"annotations":{"metallb.universe.tf/address-pool":"first-pool"},"name":"tcp-loadbalancer","namespace":"default"},"spec":{"ports":[{"name":"http","port":80,"protocol":"TCP","targetPort":8000},{"name":"https","port":443,"protocol":"TCP","targetPort":4443}],"selector":{"app":"traefik"},"type":"LoadBalancer"}}
+    metallb.universe.tf/address-pool: first-pool
+    metallb.universe.tf/ip-allocated-from-pool: first-pool
+  creationTimestamp: "2023-05-03T14:05:35Z"
+  name: tcp-loadbalancer
+  namespace: default
+  resourceVersion: "1689743"
+  uid: d4f1f249-8b90-4cc5-b90e-c215d88f65a0
+spec:
+  allocateLoadBalancerNodePorts: true
+  clusterIP: 10.98.25.114
+  clusterIPs:
+  - 10.98.25.114
+  externalTrafficPolicy: Cluster
+  internalTrafficPolicy: Cluster
+  ipFamilies:
+  - IPv4
+  ipFamilyPolicy: SingleStack
+  ports:
+  - name: http
+    nodePort: 31934
+    port: 80
+    protocol: TCP
+    targetPort: 8000
+  - name: https
+    nodePort: 32701
+    port: 443
+    protocol: TCP
+    targetPort: 4443
+  selector:
+    app: traefik
+  sessionAffinity: None
+  type: LoadBalancer
+status:
+  loadBalancer:
+    ingress:
+    - ip: 10.129.0.2
